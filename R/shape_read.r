@@ -225,8 +225,8 @@ shape_file_prep <- function(shape_file, shape_layer, bind_multiple, shape_temp) 
           utils::unzip(file.path(shape_temp, x), exdir = shape_temp)
         })
       } else {
-        purrr::walk(shape_zips, function(x) {
-          utils::unzip(shape_file, x, exdir = shape_temp)
+        purrr::walk(file.path(shape_file, shape_zips), function(x) {
+          utils::unzip(x, exdir = shape_temp)
         })
       }
       read_shape_files <- dir(shape_temp, "\\.shp$", full.names = TRUE)
@@ -278,7 +278,7 @@ shape_file_prep <- function(shape_file, shape_layer, bind_multiple, shape_temp) 
 
       if (length(read_shape_files) == 0) {
         stop(call. = FALSE, custom_format_text(
-          "Directory/zip file not formatted as expected. Please check your `shape_layer`",
+          "Directory/zip file not formatted as expected. Please check your `shape_layer` ",
           "argument or unzip and try again.", indent = 2, exdent = 2
         ))
       }

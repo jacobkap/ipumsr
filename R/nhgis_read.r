@@ -88,7 +88,14 @@ read_nhgis <- function(
       locale = extract_locale,
       progress = show_readr_progress(verbose)
     )
-  } else {
+  } else if (file_is_dir(data_file)) {
+    data <- readr::read_csv(
+      file.path(data_file, csv_name),
+      col_types = readr::cols(.default = "c"),
+      locale = extract_locale,
+      progress = show_readr_progress(verbose)
+    )
+  }else {
     data <- readr::read_csv(
       data_file,
       col_types = readr::cols(.default = "c"),

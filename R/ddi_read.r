@@ -275,7 +275,11 @@ read_ipums_codebook <- function(cb_file, data_layer = NULL) {
       if (length(cb_name) > 1) cb_name <- find_files_in(cb_file, "txt", data_layer)
     }
     if (length(cb_name) == 1) {
-      cb <- readr::read_lines(unz(cb_file, cb_name))
+      if (file_is_zip(cb_file)) {
+        cb <- readr::read_lines(unz(cb_file, cb_name))
+      } else {
+        cb <- readr::read_lines(file.path(cb_file, cb_name))
+      }
     } else {
       cb <- NULL
     }

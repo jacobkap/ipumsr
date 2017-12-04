@@ -205,13 +205,19 @@ file_is_zip <- function(file) {
   ipums_file_ext(file) == ".zip"
 }
 
+file_is_dir <- function(file) {
+  ipums_file_ext(file) == ""
+}
+
 # Treat .gz as an incomplete file extension
 ipums_file_ext <- function(file) {
-  ext <- paste0(".", tools::file_ext(file))
+  ext <- tools::file_ext(file)
+  if (ext != "") ext <- paste0(".", ext)
   if (ext == ".gz") {
     ext_part1 <- tools::file_ext(tools::file_path_sans_ext(file))
     if (ext_part1 != "") ext <- paste0(".", ext_part1, ext)
   }
+
   ext
 }
 
