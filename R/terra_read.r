@@ -56,7 +56,7 @@ read_terra_raster_internal <- function(data_file, data_layer, verbose, multiple_
   # Read data files ----
     data_is_zip <- stringr::str_sub(data_file, -4) == ".zip"
     if (data_is_zip) {
-      tiff_names <- find_files_in_zip(data_file, "tiff", data_layer, multiple_ok = multiple_ok)
+      tiff_names <- find_files_in(data_file, "tiff", data_layer, multiple_ok = multiple_ok)
 
       raster_temp <- tempfile()
       dir.create(raster_temp)
@@ -162,7 +162,7 @@ read_terra_area <- function(
 
   # Read data file ----
   if (data_is_zip) {
-    csv_name <- find_files_in_zip(data_file, "csv", data_layer)
+    csv_name <- find_files_in(data_file, "csv", data_layer)
     read_data <- unz(data_file, csv_name)
   } else {
     read_data <- data_file
@@ -324,7 +324,7 @@ read_terra_micro <- function(
 
   # Read data file ----
   if (data_is_zip) {
-    csv_name <- find_files_in_zip(data_file, "(csv|gz)", data_layer)
+    csv_name <- find_files_in(data_file, "(csv|gz)", data_layer)
     read_data <- unz(data_file, csv_name)
     if (stringr::str_sub(csv_name, -3) == ".gz") {
       read_data <- gzcon(read_data)

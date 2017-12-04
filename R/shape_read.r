@@ -42,7 +42,7 @@ read_ipums_sf <- function(shape_file, shape_layer = NULL, bind_multiple = TRUE, 
   if (shape_is_zip) {
     read_shape_files <- character(0) # Start with empty list of files to read
     # Case 1a: First zip file has zip files of shape files within it
-    shape_zips <- find_files_in_zip(shape_file, "zip", shape_layer, multiple_ok = TRUE)
+    shape_zips <- find_files_in(shape_file, "zip", shape_layer, multiple_ok = TRUE)
 
     if (!bind_multiple && length(shape_zips) > 1) {
       stop(paste(
@@ -73,7 +73,7 @@ read_ipums_sf <- function(shape_file, shape_layer = NULL, bind_multiple = TRUE, 
 
     # Case 1b: First zip file has .shp files within it
     if (length(read_shape_files) == 0) {
-      shape_shps <- find_files_in_zip(shape_file, "shp", shape_layer, multiple_ok = TRUE)
+      shape_shps <- find_files_in(shape_file, "shp", shape_layer, multiple_ok = TRUE)
 
       if (!bind_multiple && length(shape_shps) > 1) {
         stop(paste(
@@ -196,7 +196,7 @@ read_ipums_sp <- function(shape_file, shape_layer = NULL, bind_multiple = TRUE, 
   if (shape_is_zip) {
     read_shape_files <- character(0) # Start with empty list of files to read
     # Case 1a: First zip file has zip files of shape files within it
-    shape_zips <- find_files_in_zip(shape_file, "zip", shape_layer, multiple_ok = TRUE)
+    shape_zips <- find_files_in(shape_file, "zip", shape_layer, multiple_ok = TRUE)
 
     if (!bind_multiple && length(shape_zips) > 1) {
       stop(paste(
@@ -227,7 +227,7 @@ read_ipums_sp <- function(shape_file, shape_layer = NULL, bind_multiple = TRUE, 
 
     # Case 1b: First zip file has .shp files within it
     if (length(read_shape_files) == 0) {
-      shape_shps <- find_files_in_zip(shape_file, "shp", shape_layer, multiple_ok = TRUE)
+      shape_shps <- find_files_in(shape_file, "shp", shape_layer, multiple_ok = TRUE)
 
       if (!bind_multiple && length(shape_shps) > 1) {
         stop(paste(
