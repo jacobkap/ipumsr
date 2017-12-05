@@ -9,7 +9,8 @@
 #' Reads the boundary files from an IPUMS extract into R as simple features (sf) objects or
 #' SpatialPolygonsDataFrame (sp) objects.
 #'
-#' @param shape_file Filepath to one or more .shp files or a .zip file from an IPUMS extract
+#' @param shape_file Filepath to one or more .shp files, a .zip file from an IPUMS extract
+#'    or a path to an unzipped folder.
 #' @param shape_layer For .zip extracts with multiple datasets, the name of the
 #'   shape files to load. Accepts a character vector specifying the file name, or
 #'  \code{\link{dplyr_select_style}} conventions. Can load multiple shape files,

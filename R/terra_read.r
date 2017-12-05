@@ -98,10 +98,12 @@ read_terra_raster_internal <- function(data_file, data_layer, verbose, multiple_
 #'   and \code{read_terra_area_sp} returns a \code{SpatialPolygonsDataFrame} with
 #'   data and shapes.
 #' @param data_file Path to the data file, which can either be the .zip file directly
-#'   downloaded from the IPUMS Terra website, or to the csv unzipped from the download.
-#' @param shape_file (Optional) If the download is unzipped, path to the .zip or .shp file
-#'   representing the the shape file. If only the data table is needed, can be set to FALSE
-#'   to indicate not to load the shape file.
+#'   downloaded from the IPUMS Terra website, path to the unzipped folder, or to the
+#'   csv unzipped from the download.
+#' @param shape_file (Optional) If the download is unzipped, path to the .zip,
+#'   folder path or .shp file representing the the shape file. If only the data
+#'   table is needed, can be set to FALSE to indicate not to load the shape
+#'   file.
 #' @param data_layer For .zip extracts with multiple datasets, the name of the
 #'   data to load. Accepts a character vector specifying the file name, or
 #'  \code{\link{dplyr_select_style}} conventions. Data layer must uniquely identify
@@ -283,12 +285,14 @@ read_terra_area_sp <- function(
 #'   and \code{read_terra_micro_sp} returns a \code{SpatialPolygonsDataFrame} with
 #'   data and shapes.
 #' @param data_file Path to the data file, which can either be the .zip file directly
-#'   downloaded from the IPUMS Terra website, or to the csv unzipped from the download.
+#'   downloaded from the IPUMS Terra website, a path to the unzipped version of that
+#'   folder, or to the csv unzipped from the download.
 #' @param ddi_file (Optional) If the download is unzipped, path to the .xml file which
 #'   provides usage and citation information for extract.
-#' @param shape_file (Optional) If the download is unzipped, path to the .zip or .shp file
-#'   representing the the shape file. If only the data table is needed, can be set to FALSE
-#'   to indicate not to load the shape file.
+#' @param shape_file (Optional) If the download is unzipped, path to the .zip
+#'   (unzipped path) or .shp file representing the the shape file. If only the
+#'   data table is needed, can be set to FALSE to indicate not to load the shape
+#'   file.
 #' @param data_layer For .zip extracts with multiple datasets, the name of the
 #'   data to load. Accepts a character vector specifying the file name, or
 #'  \code{\link{dplyr_select_style}} conventions. Data layer must uniquely identify
